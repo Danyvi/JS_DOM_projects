@@ -2,7 +2,7 @@
 (function(){
 
   document.getElementById('message-form').addEventListener('submit', (event)=>{
-    // prevent default refesh of the page on submit
+    // prevent default refresh of the page on submit
     event.preventDefault();
     // getting input value
     let message = document.getElementById('message');
