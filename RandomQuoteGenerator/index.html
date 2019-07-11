@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quote Generator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- Google Fonts Roboto & Charm-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Charm|Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/8c46bd47fc.js"></script>
+    <!-- main CSS File -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row max-height align-items-center">
+        <div class="col-11 mx-auto col-md=6 quote-container p-5">
+          <button
+            class="btn-outline-primary text-capitalize my-4 d-block mx-auto"
+            id="generate-btn"
+          >
+            Generate quote
+          </button>
+
+          <h3 class="text-muted">
+            <span class="quote-icon mr-3">
+              <i class="fas fa-quote-left fa-3x"></i>
+            </span>
+            <span id="quote">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              doloribus, quam in nostrum rerum alias veritatis labore voluptates
+              voluptas! Asperiores.
+            </span>
+          </h3>
+          <h5 class="text-right text-capitalize author">
+            -<span class="quote-author ml-3">author</span>
+          </h5>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- Script File -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>
