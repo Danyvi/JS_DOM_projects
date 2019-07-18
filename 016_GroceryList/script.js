@@ -9,7 +9,7 @@ const clear = document.querySelector('.displayItems-clear');
 // event listeners
 submit.addEventListener('click', addItem);
 document.addEventListener('DOMContentLoaded', displayStorage);
-
+clear.addEventListener('click', removeItems);
 // functions
 
 // add item
@@ -89,5 +89,19 @@ function displayStorage() {
     })
   } else {
     groceryList=[];
+  }
+}
+
+// remove all items
+function removeItems() {
+  // delete from local storage
+  localStorage.removeItem('groceryList');
+  // delete from DOM
+  let items = document.querySelectorAll('.grocery-item');
+  if(items.length>0) {
+    showAction(displayItemsAction, 'All items deleted', false);
+    items.forEach(item=>list.removeChild(item))
+  } else {
+    showAction(displayItemsAction, 'No more items to delete', true);
   }
 }
