@@ -133,5 +133,21 @@ function removeSingleItem(event) {
     list.removeChild(groceryItem);
     showAction(displayItemsAction, `${text} removed from the list`, true);
     // remove groceryItem from local storage
+    editStorage(text);
   }
+}
+
+// edit storage
+function editStorage(item) {
+  let groceryItems = JSON.parse(localStorage.getItem('groceryList'));
+  // console.log("Logged Output: editStorage -> groceryItems", groceryItems)
+  let index = groceryItems.indexOf(item);
+  // console.log("Logged Output: editStorage -> index", index)
+  // remove the item of that index from the array
+  groceryItems.splice(index, 1);
+  // console.log("Logged Output: editStorage -> groceryItems", groceryItems)
+  // remove the item from local storage
+  localStorage.removeItem('groceryList');
+  // set the new items
+  localStorage.setItem('groceryList', JSON.stringify(groceryItems));
 }
