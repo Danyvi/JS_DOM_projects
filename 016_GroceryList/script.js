@@ -20,6 +20,7 @@ function addItem(event) {
   } else {
     showAction(addItemsAction, `${value} added to the list`, true);
     createItem(value);
+    updateStorage(value);
   }
 }
 // show action
@@ -55,4 +56,23 @@ function createItem(value) {
   ></a>
   `;
   list.appendChild(parent);
+}
+// update storage
+function updateStorage(value) {
+  let groceryList;
+  // let exists = localStorage.getItem('groceryList');
+
+  groceryList = localStorage.getItem('groceryList')
+    ? JSON.parse(localStorage.getItem('groceryList'))
+    : [];
+
+  // long version of ternary operator above
+  // if (exists) {
+  //   groceryList = JSON.parse(localStorage.getItem('groceryList'))
+  // } else {
+  //   groceryList=[];
+  // }
+
+  groceryList.push(value);
+  localStorage.setItem('groceryList', JSON.stringify(groceryList));
 }
