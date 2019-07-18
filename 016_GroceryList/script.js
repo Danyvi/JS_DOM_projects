@@ -8,6 +8,7 @@ const clear = document.querySelector('.displayItems-clear');
 
 // event listeners
 submit.addEventListener('click', addItem);
+document.addEventListener('DOMContentLoaded', displayStorage);
 
 // functions
 
@@ -75,4 +76,18 @@ function updateStorage(value) {
 
   groceryList.push(value);
   localStorage.setItem('groceryList', JSON.stringify(groceryList));
+}
+
+// display local storage function
+function displayStorage() {
+  let exists = localStorage.getItem('groceryList');
+
+  if (exists) {
+    let storageItems = JSON.parse(localStorage.getItem('groceryList'));
+    storageItems.forEach(item=>{
+      createItem(item)
+    })
+  } else {
+    groceryList=[];
+  }
 }
