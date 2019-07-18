@@ -10,6 +10,9 @@ const clear = document.querySelector('.displayItems-clear');
 submit.addEventListener('click', addItem);
 document.addEventListener('DOMContentLoaded', displayStorage);
 clear.addEventListener('click', removeItems);
+list.addEventListener('click', removeSingleItem);
+
+
 // functions
 
 // add item
@@ -103,5 +106,32 @@ function removeItems() {
     items.forEach(item=>list.removeChild(item))
   } else {
     showAction(displayItemsAction, 'No more items to delete', true);
+  }
+}
+
+/**
+ * To delete single item we make use of bubbling since we are adding item dynamically with JS
+ * instead of placing an addEventListener on the actual link
+ * <a href="#" class="grocery-item__link"><i class="far fa-trash-alt"></i></a>
+ * when we ave the <div class="grocery-list></div>" we can add an event listener to the list
+ * and then we can check when we are clicking on the link
+ */
+
+// remove single item
+function removeSingleItem(event) {
+  event.preventDefault();
+  // console.log(event.target);
+  // console.log(event.target.parentElement);
+  let link = event.target.parentElement;
+  // console.log("Logged Output: removeSingleItem -> link", link)
+  if(link.classList.contains('grocery-item__link')){
+    // previous element sibling <h4 class='grocery-item__title'>text</h4>
+    let text = link.previousElementSibling.innerHTML;
+    // parent element <div class='grocery-item'></div>
+    let groceryItem = event.target.parentElement.parentElement;
+    // remove groceryItem from the list
+    list.removeChild(groceryItem);
+    showAction(displayItemsAction, `${text} removed from the list`, true);
+    // remove groceryItem from local storage
   }
 }
